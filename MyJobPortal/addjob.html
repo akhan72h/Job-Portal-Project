@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Add SweetAlert CSS and JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand job-prtl" href="#">Job Portal</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="Home.html">HOME</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="addJob.html">ADD JOBS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="myJob.html">MY JOBS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="employee.html">EMPLOYEES</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="profile.html">PROFILE</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Login.html">LOG OUT</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="py-5 ">
+        <div class="container bg-border">
+          <div class="row">
+            <div class="col-12">
+              <h1 class="h1">Add Job</h1>
+              <form class="Form" action="">
+                <input type="text" placeholder="TITLE" id="title" />
+                <input
+                  type="number"
+                  placeholder="Maximum number of Applicant"
+                  id="maxApplicants"
+                />
+                <input
+                  type="number"
+                  placeholder="Position Available"
+                  id="maxPositions"
+                />
+                <input
+                  type="date"
+                  placeholder="application Deadline"
+                  id="deadline"
+                />
+                <input type="text" placeholder="Skills" id="skillsets" />
+                <select type="select" name="" id="jobType">
+                  <option value="fulltime">Full Time</option>
+                  <option value="part time">Part Time</option>
+                </select>
+                <select type="select" name="" id="duration" >
+                  <option value="1">Flexible</option>
+                  <option value="2">1 month</option>
+                  <option value="3">2 month</option>
+                  <option value="4">3 month</option>
+                  <option value="5">4 month</option>
+                  <option value="6">5 month</option>
+                  <option value="7">6 month</option>
+                </select>
+                <input type="number" placeholder="salary" id="salary" />
+                <button class="Login-button" onclick="addJobs(event)">Create Job</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+  <script>
+
+const dateString = document.getElementById('deadline').value;
+var formattedDate = formatDate(dateString);
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+}
+
+      let p = localStorage.getItem("token");
+
+      function addJobs(e) {
+          e.preventDefault();
+          let obj = {
+              title: document.getElementById("title").value,
+              skillsets: document.getElementById("skillsets").value,
+              jobType: document.getElementById("jobType").value,
+              duration: document.getElementById("duration").value,
+             // deadline: document.getElementById("deadline").value,
+              deadline: +(formattedDate),
+              maxApplicants: document.getElementById("maxApplicants").value,
+              maxPositions: document.getElementById("maxPositions").value,
+              salary: document.getElementById("salary").value,
+          };
+
+          fetch("http://localhost:4444/api/jobs?myjobs=1", { 
+              method: "POST",
+              body: JSON.stringify(obj),
+              headers: {
+                  "Content-type": "application/json",
+                  "Authorization": `Bearer ${p}`
+              }
+          })
+          .then(response => response.json())
+          .then(data => {
+              console.log(data);
+              if (data.message === "Job added successfully to the database") {
+               
+                  Swal.fire({
+                      title: 'Job Added!',
+                      text: data.message,
+                      icon: 'success',
+                      confirmButtonText: 'OK',
+                      customClass: {
+                          popup: 'swal2-popup',
+                          title: 'swal2-title',
+                          content: 'swal2-content',
+                          confirmButton: 'swal2-confirm'
+                      }
+                  });
+              } else {
+              
+                  Swal.fire({
+                      title: 'Error!',
+                      text: data.message,
+                      icon: 'error',
+                      confirmButtonText: 'Try Again',
+                      customClass: {
+                          popup: 'swal2-popup',
+                          title: 'swal2-title',
+                          content: 'swal2-content',
+                          confirmButton: 'swal2-confirm'
+                      }
+                  });
+              }
+          })
+          .catch(error => {
+              console.error('Error:', error);
+              Swal.fire({
+                  title: 'An error occurred!',
+                  text: 'Please try again later.',
+                  icon: 'error',
+                  confirmButtonText: 'OK',
+                  customClass: {
+                      popup: 'swal2-popup',
+                      title: 'swal2-title',
+                      content: 'swal2-content',
+                      confirmButton: 'swal2-confirm'
+                  }
+              });
+          });
+      }
+  </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    
+</body>
+</html>

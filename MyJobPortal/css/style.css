@@ -1,0 +1,433 @@
+@font-face {
+    font-family: Poppins;
+    src: url(../fonts/poppins.regular.ttf);
+}
+
+body {
+    background: url('../images/job.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #ffc30d; 
+    font-family: Poppins;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.navbar {
+    background-color: #1a1a1a; 
+    position: fixed; 
+    width: 100%; 
+    z-index: 1000;
+    padding: 15px;
+}
+.navbar-brand {
+    color: #ffc30d;
+    font-size: 1.5rem; 
+}
+.nav-link {
+    color: #ffc30d !important; 
+    text-decoration: none; 
+    position: relative;
+    padding: 10px 15px; 
+}
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #ffc30d; 
+    transition: width 0.3s ease-in-out;
+}
+.nav-link:hover::after {
+    width: 100%; 
+}
+.navbar-nav .nav-item {
+    list-style: none; 
+}
+
+ /* Custom styles for the section */
+ section {
+   
+    padding: 100px 0; 
+    /* background-image: url('../images/job.jpg'); */
+    background-size: cover; 
+    background-position: center; 
+    /* height: auto; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
+
+
+.home {
+    color: #ffc30d; 
+    font-size: 2.5rem; 
+    font-weight: bold; 
+    margin-bottom: 0; 
+}
+@media (max-width: 768px) {
+    .bg {
+        height: 300px; /* Adjusted height for smaller screens */
+    }
+    .home {
+        font-size: 2rem; /* Adjusted font size for smaller screens */
+    }
+}
+  /* Custom styles for the login section */
+.login-container {
+    max-width: 400px; 
+    margin: 0 auto; 
+    padding: 30px; 
+    border: 1px solid #ffc30d; 
+    border-radius: 10px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    text-align: center;
+}
+h1{
+    color: #ffc30d; 
+}
+p{
+    color: #ffc30d;
+}
+form {
+    margin-top: 20px; 
+input[type="email"],
+input[type="password"], 
+input[type="text"], 
+textarea[type="textarea"], 
+input[type="number"],
+input[type="date"], 
+select[type="select"] {
+    width: 100%; 
+    padding: 10px; 
+    margin-bottom: 15px; 
+    transition: border-color 0.3s; 
+    background-color: #1a1a1a; 
+    color: #ffc30d; 
+}
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus, 
+input[type="text"]:focus, 
+textarea[type="textarea"]:focus,
+input[type="number"]:focus ,
+input[type="date"]:focus ,
+select[type="select"]:focus {
+    outline: none; 
+    border-color: #ffc30d;
+}
+
+.Login-button {
+    width: 100%; 
+    padding: 10px;
+    background-color: #1a1a1a; 
+    color: #ffc30d; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s;
+}
+.Login-button:hover {
+    background-color: #ffc30d; 
+    color: #1a1a1a;
+}
+.error-message {
+    color: #dc3545; 
+    margin-top: 5px; 
+    text-align: left; 
+}
+/* Home page css */
+.search-container-wrapper {
+    position: absolute;
+    top: 100px; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    margin-bottom: 20px;
+}
+.bg-border{
+
+    padding: 0 70px 0 70px;
+    border: 1px solid #ffc30d;
+    border-radius: 5px;
+    width: 50%;
+    position: absolute;
+    top: 130px;
+}
+
+
+.H1 {
+    color: #ffc30d; 
+    text-align: center; 
+    margin-bottom: 30px; 
+}
+.h1{
+    color: #ffc30d;
+    margin-top: 35px;
+}
+.search-container {
+    max-width: 500px; 
+    margin: 0 auto; 
+    position: relative; 
+}
+.search-input[type="text"] {
+    width: calc(100% - 10px); 
+    border: 2px solid #ced4da; 
+    border-radius: 5px; 
+    transition: border-color 0.3s; 
+    padding: 15px 10px;
+    background-color: #1a1a1a; 
+    color: #ffc30d;
+}
+.search-input[type="text"]:focus {
+    border-color: #ffc30d; 
+}
+.fa-magnifying-glass {
+    position: absolute;
+    top: 50%; 
+    transform: translateY(-50%);
+    right: 20px; 
+    color: #ffc30d;
+    cursor: pointer; 
+    font-size: 25px;
+}
+@media (max-width: 576px) {
+    .search-container {
+        max-width: 100%; /* Adjust max width for smaller screens */
+    }
+}
+.img{
+    max-width: 100%;
+    cursor: pointer;
+}
+.image-container{
+    width: 2% !important;
+    margin: 20px auto !important;
+}
+.text-area{
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ced4da;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+    background-color: #1a1a1a;
+    color: #ffc30d;
+    height: 150px;
+}
+.form-container{
+    /* background: #3c3c3c; */
+    border: 1px solid #ffc30d;
+    border-radius: 5px;
+    width: 60%;
+    padding: 50px;
+    margin: auto;
+}
+.contact-num{
+    width: 50% !important;
+    margin: 0 auto;
+    display: block;
+  
+}
+.profile-button{
+    width: 36% !important;
+    margin: 0 auto;
+    display: block;
+  
+}
+ /* Modal custom styles */
+.modal-content {
+    background-color: rgba(26, 26, 26, 0.9);
+    color: #fff;
+    border-radius: 10px;
+}
+
+.modal-header {
+    border-bottom: 1px solid #ffc30d;
+}
+
+.modal-footer {
+    border-top: 1px solid #ffc30d;
+}
+
+.modal-body label {
+    /* display: block; */
+    margin-top: 15px;
+    color: #ffc30d;
+}
+
+.modal-body input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.modal-body select,
+.modal-body input[type="text"] {
+    width: 100%;
+    max-width: 600px; /* Set a maximum width for form elements */
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    background-color: #333;
+    color: #ffc30d;
+}
+
+.modal-body input[type="checkbox"] {
+    width: auto;
+}
+
+.btn-primary {
+    background-color: #1a1a1a !important;
+    border-color: #ffc30d !important;
+    display: block;
+    margin: auto;
+}
+.btn-primary:hover{
+    background-color: #ffc30d !important;
+    /* border-color: #ffc30d; */
+    color: #1a1a1a;
+}
+.btn-primary1 {
+    background-color: #ffc30d !important;
+   
+}
+.btn-primary1:hover {
+    color: #1a1a1a;
+    height: 90px !important;
+    
+}
+.btn-secondary:hover{
+ height: 90px !important;
+} 
+.btn-danger:hover{
+    height: 90px !important;
+}
+
+/* Center the checkboxes in a row */
+.modal-body .checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.modal-body .checkbox-group label {
+    display: flex;
+    align-items: center;
+}
+
+.modal-body .checkbox-group input[type="checkbox"] {
+    margin: 0 5px 0 0;
+}
+
+.slider-container {
+    max-width: 600px;
+    margin: 20px auto;
+    text-align: center;
+}
+.slider-label {
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #ffc30d;
+}
+.slider-value {
+    margin-top: 20px;
+    font-size: 17px;
+    color: #ffc30d;
+}
+.range-input {
+    width: 100%;
+    -webkit-appearance: none; 
+    appearance: none;
+    height: 8px; 
+    background: #333; 
+    border-radius: 5px; 
+    outline: none; 
+    opacity: 0.7; 
+    transition: opacity 0.2s; 
+}
+.range-input:hover {
+    opacity: 1; 
+}
+.range-input::-webkit-slider-thumb {
+    -webkit-appearance: none; 
+    appearance: none;
+    width: 20px; 
+    height: 20px;
+    background: #ffc30d;
+    border-radius: 50%;
+    cursor: pointer; 
+}
+.range-input::-moz-range-thumb {
+    width: 20px; 
+    height: 20px; 
+    background: #ffc30d; 
+    border-radius: 50%; 
+    cursor: pointer; 
+}
+.increment-decrement-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+.increment-decrement-buttons button {
+    width: 48%;
+    background-color: #ffc30d;
+    color: #1a1a1a;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.swal2-popup {
+    background-color: #1a1a1a !important;
+}
+.swal2-title,
+.swal2-content,
+.swal2-confirm {
+    color: #ffc30d !important;
+}
+.swal2-confirm {
+    background-color: #ffc30d !important;
+    color: #1a1a1a !important;
+}
+
+.card {
+    background-color: rgba(26, 26, 26, 0.9);
+    color: #ffc30d;
+    /* border-left: 1px solid #ffc30d;
+    border-right: 1px solid #ffc30d; */
+    border-top: 1px solid #ffc30d;
+    border-bottom: 1px solid #ffc30d;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+.row-margin{
+    margin-top: 225px !important;
+}
+.no-jobs-message {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 1.5rem;
+}
+.card-title{
+    text-align: start;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #fff
+}
+.card-text{
+    text-align: start;
+    font-size: 1 rem;
+    /* font-weight: bold; */
+    margin-bottom: 10px;
+    /* color: #fff */
+}
+

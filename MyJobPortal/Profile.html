@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand job-prtl" href="#">Job Portal</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="Home.html">HOME</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="addJob.html">ADD JOBS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="myJob.html">MY JOBS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="Employee.html">EMPLOYEES</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="Profile.html">PROFILE</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Login.html">LOG OUT</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section>
+        <div class="container"> 
+            <div class="row">
+                <div class="col-12 m-auto">
+                    <div class="form-container">
+                       <!-- <p>Sign up for recruiter</p> -->
+                        <h1>Profile</h1>
+                        <form class="Form" action="">
+                            <input type="text" placeholder="Name" id="name" required>
+                           
+                            <textarea class="text-area" type="textarea" name="textarea" id="bio" placeholder="Bio (upto 250 words)" required ></textarea>
+                            <input class="contact-num" type="number" id="contact" name="contact" placeholder="+91" required>
+                            <button  class="Login-button profile-button" onclick="SignUp(event)">UPDATE DETAILS</button>
+                            <div class="error-message" id="error-message"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <script>
+        
+
+
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
