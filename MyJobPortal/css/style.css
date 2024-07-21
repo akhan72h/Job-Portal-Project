@@ -4,10 +4,11 @@
 }
 
 body {
-    background: url('../images/job.jpg') no-repeat center center fixed;
+    /* background: url('../images/job.jpg') no-repeat center center fixed; */
     background-size: cover;
     color: #ffc30d; 
     font-family: Poppins;
+    background-color: #000000;
 }
 *{
     margin: 0;
@@ -95,6 +96,7 @@ p{
     color: #ffc30d;
 }
 form {
+    
     margin-top: 20px; 
 input[type="email"],
 input[type="password"], 
@@ -102,13 +104,16 @@ input[type="text"],
 textarea[type="textarea"], 
 input[type="number"],
 input[type="date"], 
-select[type="select"] {
+select[type="select"],
+.form-control[type=file] {
     width: 100%; 
     padding: 10px; 
     margin-bottom: 15px; 
     transition: border-color 0.3s; 
-    background-color: #1a1a1a; 
+    background-color: #1a1a1a;
     color: #ffc30d; 
+    /* border: none; */
+   
 }
 }
 
@@ -118,10 +123,17 @@ input[type="text"]:focus,
 textarea[type="textarea"]:focus,
 input[type="number"]:focus ,
 input[type="date"]:focus ,
-select[type="select"]:focus {
+select[type="select"]:focus,
+.form-control[type=file]:focus,
+.modal-body select,.modal-body input[type="text"]{
     outline: none; 
     border-color: #ffc30d;
+    background-color: #1a1a1a;
+    transition: border-color 0.3s;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); 
+    color: #ffc30d; 
 }
+
 
 .Login-button {
     width: 100%; 
@@ -153,7 +165,8 @@ select[type="select"]:focus {
 }
 .bg-border{
 
-    padding: 0 70px 0 70px;
+    
+    padding: 0 70px 70px 70px;
     border: 1px solid #ffc30d;
     border-radius: 5px;
     width: 50%;
@@ -268,13 +281,12 @@ select[type="select"]:focus {
 .modal-body select,
 .modal-body input[type="text"] {
     width: 100%;
-    max-width: 600px; /* Set a maximum width for form elements */
-    padding: 10px;
+   padding: 10px;
     margin-top: 10px;
     margin-bottom: 15px;
     border: 1px solid #ced4da;
     border-radius: 5px;
-    background-color: #333;
+    /* background-color: #333; */
     color: #ffc30d;
 }
 
@@ -429,5 +441,27 @@ select[type="select"]:focus {
     /* font-weight: bold; */
     margin-bottom: 10px;
     /* color: #fff */
+}
+.apply-btn{
+    background-color: #ffc30d;
+    color: #1a1a1a;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    height: 90px;
+    border: 2px solid #ffc30d;
+}
+.apply-btn:hover{
+    background-color: #333;
+    color: #ffc30d;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    height: 90px;
+    border: 2px solid #ffc30d;
 }
 

@@ -69,10 +69,13 @@
                 />
                 <input type="text" placeholder="Skills" id="skillsets" />
                 <select type="select" name="" id="jobType">
+                  <option value="Job Type">Job Type</option>
                   <option value="fulltime">Full Time</option>
                   <option value="part time">Part Time</option>
+                  <option value="Work From Home">Work From Home</option>
                 </select>
                 <select type="select" name="" id="duration" >
+                  <option value="Duration">Duration</option>
                   <option value="1">Flexible</option>
                   <option value="2">1 month</option>
                   <option value="3">2 month</option>
@@ -91,17 +94,7 @@
 
   <script>
 
-const dateString = document.getElementById('deadline').value;
-var formattedDate = formatDate(dateString);
-function formatDate(dateString) {
-    const date = new Date(dateString);
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
-    const day = String(date.getDate()).padStart(2, '0');
-    return `${year}-${month}-${day}`;
-}
-
-      let p = localStorage.getItem("token");
+ let MyToken = localStorage.getItem("token");
 
       function addJobs(e) {
           e.preventDefault();
@@ -110,8 +103,7 @@ function formatDate(dateString) {
               skillsets: document.getElementById("skillsets").value,
               jobType: document.getElementById("jobType").value,
               duration: document.getElementById("duration").value,
-             // deadline: document.getElementById("deadline").value,
-              deadline: +(formattedDate),
+              deadline: document.getElementById("deadline").value,
               maxApplicants: document.getElementById("maxApplicants").value,
               maxPositions: document.getElementById("maxPositions").value,
               salary: document.getElementById("salary").value,
@@ -122,7 +114,7 @@ function formatDate(dateString) {
               body: JSON.stringify(obj),
               headers: {
                   "Content-type": "application/json",
-                  "Authorization": `Bearer ${p}`
+                  "Authorization": `Bearer ${MyToken}`
               }
           })
           .then(response => response.json())

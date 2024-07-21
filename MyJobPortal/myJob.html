@@ -7,7 +7,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-     <!-- Add SweetAlert CSS and JS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
@@ -49,7 +48,6 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                   
                     <div class="search-container-wrapper">
                         <h1 class="H1">My Jobs</h1>
                         <div class="search-container">
@@ -68,285 +66,229 @@
         </div>
     </section>
 
- 
-
-      <!-- Bootstrap Modal -->
-  <div class="modal fade" id="jobModal" tabindex="-1" aria-labelledby="jobModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="jobModalLabel">Job Filter</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="row d-flex justify-content-around mt-4">
-                    <div class="col"><label for="job-type1">Job Type</label></div>
-                   <div class="col"> <input type="checkbox" id="Full Time" name="Full Time"><label for="Full Time">Full Time</label></div>
-                    <div class="col"><input type="checkbox" id="Part Time" name="Part Time"><label for="Part Time">Part Time</label></div>
-                    <div class="col"><input type="checkbox" id="Work From Home" name="Work From Home"><label for="Work From Home">Work From Home</label></div>
+    <!-- Bootstrap Modal -->
+    <div class="modal fade" id="jobModal" tabindex="-1" aria-labelledby="jobModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="jobModalLabel">Job Filter</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+                <div class="modal-body">
+                    <div class="row d-flex justify-content-around mt-4">
+                        <div class="col"><label for="job-type1">Job Type</label></div>
+                        <div class="col"><input type="checkbox" id="Full Time" name="Full Time"><label for="Full Time">Full Time</label></div>
+                        <div class="col"><input type="checkbox" id="Part Time" name="Part Time"><label for="Part Time">Part Time</label></div>
+                        <div class="col"><input type="checkbox" id="Work From Home" name="Work From Home"><label for="Work From Home">Work From Home</label></div>
+                    </div>
 
-                <div class="row d-flex justify-content-around mt-4">
-                    <div class="col"> <label for="salary">Salary Range</label></div>
-               
-                    <div class="slider-container col-5">
-                        <!-- <label class="slider-label" for="salaryRange">Salary Range</label> -->
-                        <input type="range" class="range-input" id="salaryRange" min="30000" max="150000" step="1000" value="75000" oninput="updateSliderValue()">
-                        
-                        <!-- <div class="increment-decrement-buttons">
-                            <button onclick="changeSliderValue(-1000)">- $1,000</button>
-                            <button onclick="changeSliderValue(1000)">+ $1,000</button>
-                        </div> -->
-                    </div> 
-                    <div class="slider-value col mx-4 text-center" id="sliderValue">$75,000</div>
-                </div>
-                
-                <div class="row d-flex justify-content-around mt-4">
-                    <div class="col"><label for="duration">Duration</label></div>
-                    <div class="col-9">
-                        <select type="select" id="salary" name="salary">
-                            <option value="1">Flexible</option>
-                          <option value="2">1 month</option>
-                          <option value="3">2 month</option>
-                          <option value="4">3 month</option>
-                          <option value="5">4 month</option>
-                          <option value="6">5 month</option>
-                          <option value="7">6 month</option>
-                        </select>
+                    <div class="row d-flex justify-content-around mt-4">
+                        <div class="col"><label for="salary">Salary Range</label></div>
+                        <div class="slider-container col-5">
+                            <input type="range" class="range-input" id="salaryRange" min="30000" max="150000" step="1000" value="75000" oninput="updateSliderValue()">
+                        </div>
+                        <div class="slider-value col mx-4 text-center" id="sliderValue">$75,000</div>
+                    </div>
+
+                    <div class="row d-flex justify-content-around mt-4">
+                        <div class="col"><label for="duration">Duration</label></div>
+                        <div class="col-9">
+                            <select type="select" id="salary" name="salary">
+                                <option value="1">Flexible</option>
+                                <option value="2">1 month</option>
+                                <option value="3">2 month</option>
+                                <option value="4">3 month</option>
+                                <option value="5">4 month</option>
+                                <option value="6">5 month</option>
+                                <option value="7">6 month</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row d-flex justify-content-around mt-4 mb-4">
+                        <div class="col"><label for="sort">Sort</label></div>
+                        <div class="col"><input type="checkbox" id="Salary" name="Salary"><label for="Salary">Salary <i class="fa-solid fa-arrow-up"></i></label></div>
+                        <div class="col"><input type="checkbox" id="Duration" name="Duration"><label for="Duration">Duration <i class="fa-solid fa-arrow-up"></i></label></div>
+                        <div class="col"><input type="checkbox" id="Rating" name="Rating"><label for="Rating">Rating <i class="fa-solid fa-arrow-up"></i></label></div>
                     </div>
                 </div>
-                
-              
-                <div class="row d-flex justify-content-around mt-4 mb-4">
-                    <div class="col"> <label for="sort">Sort</label></div>
-                    <div class="col"> <input type="checkbox" id="Salary" name="Salary"><label for="Salary">Salary <i class="fa-solid fa-arrow-up"></i></label></div>
-                    <div class="col"><input type="checkbox" id="Duration" name="Duration"><label for="Duration">Duration <i class="fa-solid fa-arrow-up"></i></label></div>
-                    <div class="col"><input type="checkbox" id="Rating" name="Rating"><label for="Rating">Rating <i class="fa-solid fa-arrow-up"></i></label></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Apply</button>
                 </div>
-               
-                
-            </div>
-            <div class="modal-footer">
-               
-                <button type="button" class="btn btn-primary">Apply</button>
             </div>
         </div>
     </div>
-</div>
 
-<script>
-    document.getElementById('job-image').addEventListener('click', function() {
-        var myModal = new bootstrap.Modal(document.getElementById('jobModal'));
-        myModal.show();
-    });
+    <script>
+        document.getElementById('job-image').addEventListener('click', function() {
+            var myModal = new bootstrap.Modal(document.getElementById('jobModal'));
+            myModal.show();
+        });
 
-    function updateSliderValue() {
+        function updateSliderValue() {
             var slider = document.getElementById('salaryRange');
             var output = document.getElementById('sliderValue');
             output.textContent = '$' + parseInt(slider.value).toLocaleString();
         }
 
-        function changeSliderValue(amount) {
-            var slider = document.getElementById('salaryRange');
-            slider.value = parseInt(slider.value) + amount;
-            if (slider.value < slider.min) {
-                slider.value = slider.min;
-            }
-            if (slider.value > slider.max) {
-                slider.value = slider.max;
-            }
-            updateSliderValue();
-        }
+        let MyToken = localStorage.getItem("token");
 
-        // Initialize slider value display
-        updateSliderValue();
-
-        let p = localStorage.getItem("token");
-
-async function displayData() {
-    let response = await fetch("http://localhost:4444/api/jobs?myjobs=1", {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${p}`
-        }
-    });
-
-    let data = await response.json();
-    display(data);
-}
-
-const display = (jobs) => {
-    let jobCardsContainer = document.getElementById('job-cards-container');
-    jobCardsContainer.innerHTML = jobs.map((job, index) => `
-        <div class="row mb-4">
-            <!-- Job Details Card -->
-            <div class="col-md-8">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h2 class="card-title">${job.title}</h2>
-                        <p class="card-text">Salary: ${job.salary}</p>
-                        <p class="card-text">Skillsets: ${job.skillsets}</p>
-                        <p class="card-text">Duration: ${job.duration}</p>
-                        <p class="card-text">Deadline: ${job.deadline}</p>
-                        <p class="card-text">Max Applicants: ${job.maxApplicants}</p>
-                        <p class="card-text">Max Positions: ${job.maxPositions}</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Buttons Card -->
-            <div class="col-md-4">
-                <div class="card h-100">
-                    <div class="card-body d-flex flex-column justify-content-center">
-                        <button class="btn btn-primary1 mb-2" onclick="viewApplications('${job._id}')">View Applications</button>
-                        <button class="btn btn-secondary mb-2" data-toggle="modal" data-target="#updateJobModal-${index}" onclick="getData(${index})">Update</button>
-                        <button class="btn btn-danger" onclick="confirmDelete('${job._id}')">Delete</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Update Job Modal -->
-        <div class="modal fade" id="updateJobModal-${index}" tabindex="-1" aria-labelledby="updateJobLabel-${index}" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="updateJobLabel-${index}">Update Job</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <input type="date" placeholder="Deadline" id="deadline-${index}" class="form-control mb-2" value="${job.deadline}">
-                        <input type="number" placeholder="Max Applicants" id="maxApplicants-${index}" class="form-control mb-2" value="${job.maxApplicants}">
-                        <input type="number" placeholder="Positions Available" id="positionAvailable-${index}" class="form-control mb-2" value="${job.maxPositions}">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-primary" onclick="confirmUpdate('${job._id}', ${index})">Save changes</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    `).join('');
-};
-
-
-
-
-// async function confirmUpdate(jobId, index) {
-//     let deadline = document.getElementById(`deadline-${index}`).value;
-//     let maxApplicants = document.getElementById(`maxApplicants-${index}`).value;
-//     let maxPositions = document.getElementById(`positionAvailable-${index}`).value;
-
-//     let obj = {
-//         deadline: deadline,
-//         maxApplicants: maxApplicants,
-//         maxPositions: maxPositions
-//     };
-
-//     let response = await fetch(`http://localhost:4444/api/jobs/${jobId}`, {
-//         method: "PUT",
-//         headers: {
-//             "Content-Type": "application/json",
-//             "Authorization": `Bearer ${p}`
-//         },
-//         body: JSON.stringify(obj)
-//     });
-
-//     let data = await response.json();
-//     if (data.success) {
-//         Swal.fire({
-//             title: 'Job Updated!',
-//             text: data.message,
-//             icon: 'success',
-//             confirmButtonText: 'OK'
-//         }).then(() => {
-//             displayData();  // Refresh the job list
-//         });
-//     } else {
-//         Swal.fire({
-//             title: 'Error!',
-//             text: data.message,
-//             icon: 'error',
-//             confirmButtonText: 'OK'
-//         });
-//     }
-// }
-
-
-
-
-// Call the function to display the jobs when the page loads
-
-
-function confirmDelete(jobId) {
-    Swal.fire({
-        title: 'Are you sure?',
-        text: "Do you really want to delete this job?",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Yes, delete it!',
-        cancelButtonText: 'No, cancel!',
-        reverseButtons: true
-    }).then((result) => {
-        if (result.isConfirmed) {
-            fetch(`http://localhost:4444/api/jobs/${jobId}`, {
-                method: "DELETE",
+        async function displayData() {
+            let response = await fetch("http://localhost:4444/api/jobs?myjobs=1", {
+                method: "GET",
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization": `Bearer ${p}`
+                    "Authorization": `Bearer ${MyToken}`
                 }
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
+            });
+
+            let data = await response.json();
+            display(data);
+        }
+
+        const display = (jobs) => {
+            let jobCardsContainer = document.getElementById('job-cards-container');
+            jobCardsContainer.innerHTML = jobs.map((job) => `
+                <div class="row mb-4">
+                    <div class="col-md-8">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h2 class="card-title">${job.title}</h2>
+                                <p class="card-text">Salary: ${job.salary}</p>
+                                <p class="card-text">Skill Sets: ${job.skillsets}</p>
+                                <p class="card-text">Job Type: ${job.jobType}</p>
+                                <p class="card-text">Duration: ${job.duration}</p>
+                                <p class="card-text">Deadline: ${job.deadline}</p>
+                                <p class="card-text">Maximum Applicants can apply: ${job.maxApplicants}</p>
+                                <p class="card-text">Maximum Positions Available: ${job.maxPositions}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100">
+                            <div class="card-body d-flex flex-column justify-content-center">
+                                <button class="btn btn-primary1 mb-2" onclick="viewApplications('${job._id}')">View Applications</button>
+                                <button class="btn btn-secondary mb-2" onclick="showUpdateModal('${job._id}', '${job.deadline}', '${job.maxApplicants}', '${job.maxPositions}')">Update Details</button>
+                                <button class="btn btn-danger" onclick="confirmDelete('${job._id}')">Delete JOB</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        };
+
+        function showUpdateModal(jobId, deadline, maxApplicants, maxPositions) {
+            Swal.fire({
+                title: 'Update Job',
+                html: `
+                    <input type="date" id="swal-deadline" class="swal2-input" value="${deadline}">
+                    <input type="number" id="swal-maxApplicants" class="swal2-input" value="${maxApplicants}">
+                    <input type="number" id="swal-maxPositions" class="swal2-input" value="${maxPositions}">
+                `,
+                focusConfirm: false,
+                preConfirm: () => {
+                    return {
+                        deadline: document.getElementById('swal-deadline').value,
+                        maxApplicants: document.getElementById('swal-maxApplicants').value,
+                        maxPositions: document.getElementById('swal-maxPositions').value
+                    }
                 }
-                return response.json();
-            })
-            .then(data => {
-                console.log('Delete response data:', data);
-                if (data.success) {
-                    Swal.fire({
-                        title: 'Deleted!',
-                        text: data.message,
-                        icon: 'success',
-                        confirmButtonText: 'OK'
-                    }).then(() => {
-                        console.log('Calling displayData');
-                        displayData();  // Refresh the job list
-                    });
-                } else {
-                    Swal.fire({
-                        title: 'Error!',
-                        text: data.message,
-                        icon: 'error',
-                        confirmButtonText: 'OK'
-                    });
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    confirmUpdate(jobId, result.value);
                 }
-            })
-            .catch(error => {
-                console.error('Error:', error);
+            });
+        }
+
+        async function confirmUpdate(jobId, updateData) {
+            let response = await fetch(`http://localhost:4444/api/jobs/${jobId}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${MyToken}`
+                },
+                body: JSON.stringify(updateData)
+            });
+
+            let data = await response.json();
+            if (data.message === 'Job details updated successfully') {
+                Swal.fire({
+                    title: 'Job Updated!',
+                    text: data.message,
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                }).then(() => {
+                    displayData();
+                });
+            } else {
                 Swal.fire({
                     title: 'Error!',
-                    text: 'There was a problem deleting the job.',
+                    text: data.message,
                     icon: 'error',
                     confirmButtonText: 'OK'
                 });
+            }
+        }
+
+        function confirmDelete(jobId) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "Do you really want to delete this job?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'No, cancel!',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    fetch(`http://localhost:4444/api/jobs/${jobId}`, {
+                        method: "DELETE",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Authorization": `Bearer ${MyToken}`
+                        }
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.message === 'Job deleted successfully') {
+                            Swal.fire({
+                                title: 'Deleted!',
+                                text: data.message,
+                                icon: 'success',
+                                confirmButtonText: 'OK'
+                            }).then(() => {
+                                displayData();
+                            });
+                        } else {
+                            Swal.fire({
+                                title: 'Error!',
+                                text: data.message,
+                                icon: 'error',
+                                confirmButtonText: 'OK'
+                            });
+                        }
+                    })
+                    .catch(error => {
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'There was a problem deleting the job.',
+                            icon: 'error',
+                            confirmButtonText: 'OK'
+                        });
+                    });
+                }
             });
         }
-    });
-}
 
-
-
-displayData();
-
-</script>
-
+        displayData();
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
-    
 </body>
 </html>
