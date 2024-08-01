@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand job-prtl" href="#">Job Portal</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="wellcome.html">WELCOME</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="RecruiterLogin.html">LOGIN</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="RecruiterRegistration.html">SIGN UP</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section>
+        <div class="container"> 
+            <div class="row">
+                <h1>Recruiter Login</h1>
+                <div class="col-12 m-auto">
+                    <div class="login-container">
+                       <!-- <p>Login For Recruiter</p> -->
+                        <h1>Log In</h1>
+                        <form action="">
+                            <input type="email" id="email" placeholder="Email" required>
+                            <input type="password" id="password" placeholder="Password" required>
+                            
+                            <button  class="Login-button" onclick="LogIn(event)">Login</button>
+                            <div class="error-message" id="error-message"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <script>
+        
+
+        function LogIn(e) {
+            e.preventDefault();
+            // Perform login validation
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            if (email === "" || password === "") {
+                document.getElementById("error-message").innerText = "Please enter both email and password.";
+            } else {
+                let obj ={
+                email : document.getElementById("email").value,
+                password : document.getElementById("password").value,
+            }
+            fetch("http://localhost:4444/auth/login",{ 
+                method : "POST",
+                body: JSON.stringify(obj),
+                headers : {
+            "Content-type": "Application/json"
+          }
+            }).then(a=>a.json()).then(a=>{
+                console.log(a);
+                if(!a.message){
+
+                localStorage.setItem("token",a.token)
+                location.href="home.html"
+                }
+            })
+            }
+        }
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

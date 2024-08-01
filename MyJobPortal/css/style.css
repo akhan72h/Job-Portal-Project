@@ -298,7 +298,7 @@ select[type="select"]:focus,
     background-color: #1a1a1a !important;
     border-color: #ffc30d !important;
     display: block;
-    margin: auto;
+    /* margin: auto; */
 }
 .btn-primary:hover{
     background-color: #ffc30d !important;

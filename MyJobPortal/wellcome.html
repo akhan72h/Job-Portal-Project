@@ -6,25 +6,29 @@
     <title>Job Portal</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        .card {
+            margin: auto;
+        }
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    </style>
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
             <div class="container-fluid">
-                <a class="navbar-brand job-prtl" href="#">Job Portal</a>
+                <a class="navbar-brand job-prtl" href="welcome.html">Job Portal</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="welcome.html">WELCOME</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="Login.html">LOGIN</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="registration.html">SIGN UP</a>
+                            <a class="nav-link" aria-current="page" href="welcome.html">FAQs</a>
                         </li>
                     </ul>
                 </div>
@@ -32,27 +36,33 @@
         </nav>
     </header>
 
-    <section>
+    <section class="mt-5 pt-5">
         <div class="container">
             <div class="row">
-                <div class="col-12 m-auto bg">
-                    
-                  
-                    
-                    <h1 class="home">Welcome to Job Portal</h1>
-                           
-                        
-                       
-                     
+                <h1 class="text-center">WELCOME</h1>
+                <div class="col-12 d-flex justify-content-center text-center">
+                    <div class="card col-md-4 m-2">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Recruiter Actions</h5>
+                            <a class="nav-link" href="RecruiterRegistration.html">SIGN UP</a>
+                            <a class="nav-link" href="RecruiterLogin.html">LOGIN</a>
+                            <a href="#" class="btn btn-primary mt-3">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="card col-md-4 m-2">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Applicant Actions</h5>
+                            <a class="nav-link" href="ApplicantRegistration.html">SIGN UP</a>
+                            <a class="nav-link" href="ApplicantLogin.html">LOGIN</a>
+                            <a href="#" class="btn btn-primary mt-3">Learn More</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
-
-
