@@ -22,7 +22,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="Home.html">HOME</a>
+                            <a class="nav-link" aria-current="page" href="RecruiterHome.html">HOME</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="addJob.html">ADD JOBS</a>
@@ -31,13 +31,13 @@
                             <a class="nav-link" aria-current="page" href="myJob.html">MY JOBS</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="employee.html">EMPLOYEES</a>
+                            <a class="nav-link" aria-current="page" href="Employee.html">EMPLOYEES</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="profile.html">PROFILE</a>
+                            <a class="nav-link" aria-current="page" href="RecruiterProfile.html">PROFILE</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="Login.html">LOG OUT</a>
+                            <a class="nav-link" href="RecruiterLogin.html">LOG OUT</a>
                         </li>
                     </ul>
                 </div>
@@ -70,8 +70,8 @@
                 <input type="text" placeholder="Skills" id="skillsets" />
                 <select type="select" name="" id="jobType">
                   <option value="Job Type">Job Type</option>
-                  <option value="fulltime">Full Time</option>
-                  <option value="part time">Part Time</option>
+                  <option value="Full Time">Full Time</option>
+                  <option value="Part Time">Part Time</option>
                   <option value="Work From Home">Work From Home</option>
                 </select>
                 <select type="select" name="" id="duration" >
@@ -93,6 +93,10 @@
       </section>
 
   <script>
+
+//<*********************************************************************************************>
+    // Add Jobs API call // Creating Jobs
+//<*********************************************************************************************>
 
  let MyToken = localStorage.getItem("token");
 

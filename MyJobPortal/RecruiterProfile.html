@@ -18,7 +18,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="ApplicantHome.html">HOME</a>
+                            <a class="nav-link" aria-current="page" href="RecruiterHome.html">HOME</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="addJob.html">ADD JOBS</a>
@@ -30,10 +30,10 @@
                             <a class="nav-link" aria-current="page" href="Employee.html">EMPLOYEES</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="Profile.html">PROFILE</a>
+                            <a class="nav-link" aria-current="page" href="RecruiterProfile.html">PROFILE</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="Login.html">LOG OUT</a>
+                            <a class="nav-link" href="RecruiterLogin.html">LOG OUT</a>
                         </li>
                     </ul>
                 </div>
@@ -53,8 +53,8 @@
                             <input type="text" placeholder="Name" id="name" required>
                            
                             <textarea class="text-area" type="textarea" name="textarea" id="bio" placeholder="Bio (upto 250 words)" required ></textarea>
-                            <input class="contact-num" type="number" id="contact" name="contact" placeholder="+91" required>
-                            <button  class="Login-button profile-button" onclick="SignUp(event)">UPDATE DETAILS</button>
+                            <input class="contact-num" type="tel" id="contact" name="contact" placeholder="Your Contact Number" required>
+                            <button  class="Login-button profile-button" onclick="showProfile();">Get Your Profile</button>
                             <div class="error-message" id="error-message"></div>
                         </form>
                     </div>
@@ -64,10 +64,45 @@
     </section>
     
     <script>
+        // Function to display profile of recruiters
+        function showProfile() {
+            
+            let MyToken = localStorage.getItem("token");
+    
+           
+            fetch('http://localhost:4444/api/user', {
+                method: 'GET',
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${MyToken}` // Include the Bearer token
+                }
+            })
+            .then(res => {
+                if (!res.ok) {
+                   
+                    throw new Error('Network response was not ok. Status: ' + res.status);
+                }
+                return res.json();
+            })
+            .then((data) => {
+
+                console.log(data); // Log the received data for debugging
+    
+                
+                document.getElementById('name').value = data.name || ''; 
+                document.getElementById('bio').value = data.bio || ''; 
+                document.getElementById('contact').value = data.contactNumber || ''; 
+            })
+            .catch((error) => {
+                console.error('There was a problem with the fetch operation:', error);
+                
+            });
+        }
+    
         
-
-
+        
     </script>
+    
 
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>

@@ -1,154 +1,266 @@
+<!-- @format -->
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Job Portal</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.css">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.css"
+    />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-            <div class="container-fluid">
-                <a class="navbar-brand job-prtl" href="#">Job Portal</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="Home.html">HOME</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="addJob.html">ADD JOBS</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="myJob.html">MY JOBS</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="employee.html">EMPLOYEES</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="profile.html">PROFILE</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="Login.html">LOG OUT</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+      <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand job-prtl" href="#">Job Portal</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  aria-current="page"
+                  href="RecruiterHome.html"
+                  >HOME</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="addJob.html"
+                  >ADD JOBS</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="myJob.html"
+                  >MY JOBS</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="Employee.html"
+                  >EMPLOYEES</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="RecruiterProfile.html"
+                  >PROFILE</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="RecruiterLogin.html">LOG OUT</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
     </header>
 
     <section>
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="search-container-wrapper">
-                        <h1 class="H1">My Jobs</h1>
-                        <div class="search-container">
-                            <input class="search-input" type="text" placeholder="Search job...">
-                            <span class="fa-solid fa-magnifying-glass"></span>
-                        </div>
-                        <div class="image-container">
-                           <img id="job-image" class="img" src="images/lines.webp" alt="">
-                        </div>
-                    </div>
-                </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="search-container-wrapper">
+              <h1 class="H1">My Jobs</h1>
+              <div class="search-container">
+                <input
+                  class="search-input"
+                  type="text"
+                  id="job-search-input"
+                  placeholder="Search job..."
+                />
+                <span
+                  class="fa-solid fa-magnifying-glass"
+                  id="search-button"
+                  style="cursor: pointer"
+                ></span>
+              </div>
+              <div class="image-container">
+                <img
+                  id="job-image"
+                  class="img"
+                  src="images/lines.webp"
+                  alt=""
+                />
+              </div>
             </div>
-            <div class="row row-margin" id="job-cards-container">
-                <!-- Job cards will be inserted here -->
-            </div>
+          </div>
         </div>
+        <div class="row row-margin" id="job-cards-container">
+          <!-- Job cards will be inserted here -->
+        </div>
+      </div>
     </section>
 
     <!-- Bootstrap Modal -->
-    <div class="modal fade" id="jobModal" tabindex="-1" aria-labelledby="jobModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="jobModalLabel">Job Filter</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row d-flex justify-content-around mt-4">
-                        <div class="col"><label for="job-type1">Job Type</label></div>
-                        <div class="col"><input type="checkbox" id="Full Time" name="Full Time"><label for="Full Time">Full Time</label></div>
-                        <div class="col"><input type="checkbox" id="Part Time" name="Part Time"><label for="Part Time">Part Time</label></div>
-                        <div class="col"><input type="checkbox" id="Work From Home" name="Work From Home"><label for="Work From Home">Work From Home</label></div>
-                    </div>
-
-                    <div class="row d-flex justify-content-around mt-4">
-                        <div class="col"><label for="salary">Salary Range</label></div>
-                        <div class="slider-container col-5">
-                            <input type="range" class="range-input" id="salaryRange" min="30000" max="150000" step="1000" value="75000" oninput="updateSliderValue()">
-                        </div>
-                        <div class="slider-value col mx-4 text-center" id="sliderValue">$75,000</div>
-                    </div>
-
-                    <div class="row d-flex justify-content-around mt-4">
-                        <div class="col"><label for="duration">Duration</label></div>
-                        <div class="col-9">
-                            <select type="select" id="salary" name="salary">
-                                <option value="1">Flexible</option>
-                                <option value="2">1 month</option>
-                                <option value="3">2 month</option>
-                                <option value="4">3 month</option>
-                                <option value="5">4 month</option>
-                                <option value="6">5 month</option>
-                                <option value="7">6 month</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="row d-flex justify-content-around mt-4 mb-4">
-                        <div class="col"><label for="sort">Sort</label></div>
-                        <div class="col"><input type="checkbox" id="Salary" name="Salary"><label for="Salary">Salary <i class="fa-solid fa-arrow-up"></i></label></div>
-                        <div class="col"><input type="checkbox" id="Duration" name="Duration"><label for="Duration">Duration <i class="fa-solid fa-arrow-up"></i></label></div>
-                        <div class="col"><input type="checkbox" id="Rating" name="Rating"><label for="Rating">Rating <i class="fa-solid fa-arrow-up"></i></label></div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Apply</button>
-                </div>
+    <div
+      class="modal fade"
+      id="jobModal"
+      tabindex="-1"
+      aria-labelledby="jobModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="jobModalLabel">Job Filter</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="row d-flex justify-content-around mt-4">
+              <div class="col"><label for="job-type1">Job Type</label></div>
+              <div class="col">
+                <input
+                  type="checkbox"
+                  id="Full Time"
+                  name="job-type"
+                  value="Full Time"
+                /><label for="Full Time">Full Time</label>
+              </div>
+              <div class="col">
+                <input
+                  type="checkbox"
+                  id="Part Time"
+                  name="job-type"
+                  value="Part Time"
+                /><label for="Part Time">Part Time</label>
+              </div>
+              <div class="col">
+                <input
+                  type="checkbox"
+                  id="Work From Home"
+                  name="job-type"
+                  value="Work From Home"
+                /><label for="Work From Home">Work From Home</label>
+              </div>
             </div>
+
+            <div class="row d-flex justify-content-around mt-4">
+              <div class="col"><label for="salary">Salary Range</label></div>
+              <div class="slider-container col-5">
+                <input
+                  type="range"
+                  class="range-input"
+                  id="salaryRange"
+                  min="30000"
+                  max="150000"
+                  step="1000"
+                  value="75000"
+                  oninput="updateSliderValue()"
+                />
+              </div>
+              <div class="slider-value col mx-4 text-center" id="sliderValue">
+                $75,000
+              </div>
+            </div>
+
+            <div class="row d-flex justify-content-around mt-4">
+              <div class="col"><label for="duration">Duration</label></div>
+              <div class="col-9">
+                <select type="select" id="salary" name="salary">
+                  <option value="1">Flexible</option>
+                  <option value="2">1 month</option>
+                  <option value="3">2 month</option>
+                  <option value="4">3 month</option>
+                  <option value="5">4 month</option>
+                  <option value="6">5 month</option>
+                  <option value="7">6 month</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="row d-flex justify-content-around mt-4 mb-4">
+              <div class="col"><label for="sort">Sort</label></div>
+              <div class="col">
+                <input type="checkbox" id="salary-sort" name="salary-sort" />
+                <label for="salary-sort">Salary <i class="fa-solid fa-arrow-up"></i></label>
+             </div>
+              <div class="col">
+                <input type="checkbox" id="Duration" name="Duration" /><label
+                  for="Duration"
+                  >Duration <i class="fa-solid fa-arrow-up"></i
+                ></label>
+              </div>
+              <div class="col">
+                <input type="checkbox" id="Rating" name="Rating" /><label
+                  for="Rating"
+                  >Rating <i class="fa-solid fa-arrow-up"></i
+                ></label>
+              </div>
+            </div>
+          </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" id="apply-sort">Salary Sorting</button>
+            <button type="button" class="btn btn-primary" id="apply-filter">
+              Job Type Sorting
+            </button>
+          </div>
         </div>
+      </div>
     </div>
 
     <script>
-        document.getElementById('job-image').addEventListener('click', function() {
-            var myModal = new bootstrap.Modal(document.getElementById('jobModal'));
-            myModal.show();
+      document
+        .getElementById("job-image")
+        .addEventListener("click", function () {
+          var myModal = new bootstrap.Modal(
+            document.getElementById("jobModal")
+          );
+          myModal.show();
         });
 
-        function updateSliderValue() {
-            var slider = document.getElementById('salaryRange');
-            var output = document.getElementById('sliderValue');
-            output.textContent = '$' + parseInt(slider.value).toLocaleString();
-        }
+      function updateSliderValue() {
+        var slider = document.getElementById("salaryRange");
+        var output = document.getElementById("sliderValue");
+        output.textContent = "$" + parseInt(slider.value).toLocaleString();
+      }
 
-        let MyToken = localStorage.getItem("token");
+      let MyToken = localStorage.getItem("token");
+      let allJobs = [];
+      async function displayData() {
+        let response = await fetch("http://localhost:4444/api/jobs?myjobs=1", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${MyToken}`,
+          },
+        });
 
-        async function displayData() {
-            let response = await fetch("http://localhost:4444/api/jobs?myjobs=1", {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${MyToken}`
-                }
-            });
+        let data = await response.json();
+        allJobs = data; // Store all jobs in a global variable
+        display(data);
+      }
 
-            let data = await response.json();
-            display(data);
-        }
-
-        const display = (jobs) => {
-            let jobCardsContainer = document.getElementById('job-cards-container');
-            jobCardsContainer.innerHTML = jobs.map((job) => `
+      const display = (jobs) => {
+        let jobCardsContainer = document.getElementById("job-cards-container");
+        jobCardsContainer.innerHTML = jobs
+          .map(
+            (job) => `
                 <div class="row mb-4">
                     <div class="col-md-8">
                         <div class="card h-100">
@@ -174,121 +286,208 @@
                         </div>
                     </div>
                 </div>
-            `).join('');
-        };
+            `
+          )
+          .join("");
+      };
 
-        function showUpdateModal(jobId, deadline, maxApplicants, maxPositions) {
-            Swal.fire({
-                title: 'Update Job',
-                html: `
+//<*********************************************************************************************>
+    // Function to sort jobs by salary
+//<*********************************************************************************************>  
+  
+function sortJobsBySalary(jobs) {
+    return jobs.sort((a, b) => a.salary - b.salary);
+}
+
+// Event listener for the Apply button
+document.getElementById('apply-sort').addEventListener('click', function() {
+    // Check if the salary sort checkbox is checked
+    const isSalarySortChecked = document.getElementById('salary-sort').checked;
+
+    let jobsToDisplay = allJobs;
+
+    if (isSalarySortChecked) {
+        // Sort the jobs by salary in ascending order
+        jobsToDisplay = sortJobsBySalary(jobsToDisplay);
+    }
+
+    // Display the sorted jobs
+    display(jobsToDisplay);
+});
+
+//<*********************************************************************************************>
+     // Function to filter jobs based on selected job types
+//<*********************************************************************************************>  
+ function filterJobsByType() {
+        const selectedTypes = Array.from(
+          document.querySelectorAll('input[name="job-type"]:checked')
+        ).map((input) => input.value);
+        console.log(selectedTypes);
+        
+        // If no job type is selected, display all jobs
+        const FilteredJobs =
+          selectedTypes.length === 0
+            ? allJobs
+            : allJobs.filter((job) => selectedTypes.includes(job.jobType));
+
+        display(FilteredJobs);
+      }
+
+      // Event listener for the Apply button
+      document
+        .getElementById("apply-filter")
+        .addEventListener("click", filterJobsByType);
+
+
+//<*********************************************************************************************>
+    // Adding search functionality
+//<*********************************************************************************************>       
+   document
+        .getElementById("search-button")
+        .addEventListener("click", function () {
+          const searchTerm = document
+            .getElementById("job-search-input")
+            .value.toLowerCase();
+
+          fetch("http://localhost:4444/api/jobs?myjobs=1", {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${MyToken}`,
+            },
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              const filteredJobs = data.filter((job) =>
+                job.title.toLowerCase().includes(searchTerm)
+              );
+              display(filteredJobs);
+            })
+            .catch((error) => console.error("Error:", error));
+        });
+
+
+ //<*********************************************************************************************>
+    // Updating Jobs functionality
+//<*********************************************************************************************>
+      function showUpdateModal(jobId, deadline, maxApplicants, maxPositions) {
+        Swal.fire({
+          title: "Update Job",
+          html: `
                     <input type="date" id="swal-deadline" class="swal2-input" value="${deadline}">
                     <input type="number" id="swal-maxApplicants" class="swal2-input" value="${maxApplicants}">
                     <input type="number" id="swal-maxPositions" class="swal2-input" value="${maxPositions}">
                 `,
-                focusConfirm: false,
-                preConfirm: () => {
-                    return {
-                        deadline: document.getElementById('swal-deadline').value,
-                        maxApplicants: document.getElementById('swal-maxApplicants').value,
-                        maxPositions: document.getElementById('swal-maxPositions').value
-                    }
-                }
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    confirmUpdate(jobId, result.value);
-                }
-            });
+          focusConfirm: false,
+          preConfirm: () => {
+            return {
+              deadline: document.getElementById("swal-deadline").value,
+              maxApplicants:
+                document.getElementById("swal-maxApplicants").value,
+              maxPositions: document.getElementById("swal-maxPositions").value,
+            };
+          },
+        }).then((result) => {
+          if (result.isConfirmed) {
+            confirmUpdate(jobId, result.value);
+          }
+        });
+      }
+
+ //<*********************************************************************************************>
+    // Confirm Update Function
+//<*********************************************************************************************>
+      async function confirmUpdate(jobId, updateData) {
+        let response = await fetch(`http://localhost:4444/api/jobs/${jobId}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${MyToken}`,
+          },
+          body: JSON.stringify(updateData),
+        });
+
+        let data = await response.json();
+        if (data.message === "Job details updated successfully") {
+          Swal.fire({
+            title: "Job Updated!",
+            text: data.message,
+            icon: "success",
+            confirmButtonText: "OK",
+          }).then(() => {
+            displayData();
+          });
+        } else {
+          Swal.fire({
+            title: "Error!",
+            text: data.message,
+            icon: "error",
+            confirmButtonText: "OK",
+          });
         }
-
-        async function confirmUpdate(jobId, updateData) {
-            let response = await fetch(`http://localhost:4444/api/jobs/${jobId}`, {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${MyToken}`
-                },
-                body: JSON.stringify(updateData)
-            });
-
-            let data = await response.json();
-            if (data.message === 'Job details updated successfully') {
-                Swal.fire({
-                    title: 'Job Updated!',
+      }
+//<*********************************************************************************************>
+    // Deleting Jobs functionality
+//<*********************************************************************************************>
+      function confirmDelete(jobId) {
+        Swal.fire({
+          title: "Are you sure?",
+          text: "Do you really want to delete this job?",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonText: "Yes, delete it!",
+          cancelButtonText: "No, cancel!",
+          reverseButtons: true,
+        }).then((result) => {
+          if (result.isConfirmed) {
+            fetch(`http://localhost:4444/api/jobs/${jobId}`, {
+              method: "DELETE",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${MyToken}`,
+              },
+            })
+              .then((response) => {
+                if (!response.ok) {
+                  throw new Error("Network response was not ok");
+                }
+                return response.json();
+              })
+              .then((data) => {
+                if (data.message === "Job deleted successfully") {
+                  Swal.fire({
+                    title: "Deleted!",
                     text: data.message,
-                    icon: 'success',
-                    confirmButtonText: 'OK'
-                }).then(() => {
+                    icon: "success",
+                    confirmButtonText: "OK",
+                  }).then(() => {
                     displayData();
-                });
-            } else {
-                Swal.fire({
-                    title: 'Error!',
+                  });
+                } else {
+                  Swal.fire({
+                    title: "Error!",
                     text: data.message,
-                    icon: 'error',
-                    confirmButtonText: 'OK'
-                });
-            }
-        }
-
-        function confirmDelete(jobId) {
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "Do you really want to delete this job?",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Yes, delete it!',
-                cancelButtonText: 'No, cancel!',
-                reverseButtons: true
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    fetch(`http://localhost:4444/api/jobs/${jobId}`, {
-                        method: "DELETE",
-                        headers: {
-                            "Content-Type": "application/json",
-                            "Authorization": `Bearer ${MyToken}`
-                        }
-                    })
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok');
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        if (data.message === 'Job deleted successfully') {
-                            Swal.fire({
-                                title: 'Deleted!',
-                                text: data.message,
-                                icon: 'success',
-                                confirmButtonText: 'OK'
-                            }).then(() => {
-                                displayData();
-                            });
-                        } else {
-                            Swal.fire({
-                                title: 'Error!',
-                                text: data.message,
-                                icon: 'error',
-                                confirmButtonText: 'OK'
-                            });
-                        }
-                    })
-                    .catch(error => {
-                        Swal.fire({
-                            title: 'Error!',
-                            text: 'There was a problem deleting the job.',
-                            icon: 'error',
-                            confirmButtonText: 'OK'
-                        });
-                    });
+                    icon: "error",
+                    confirmButtonText: "OK",
+                  });
                 }
-            });
-        }
+              })
+              .catch((error) => {
+                Swal.fire({
+                  title: "Error!",
+                  text: "There was a problem deleting the job.",
+                  icon: "error",
+                  confirmButtonText: "OK",
+                });
+              });
+          }
+        });
+      }
 
-        displayData();
+      displayData();
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
-</body>
+  </body>
 </html>

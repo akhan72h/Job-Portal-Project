@@ -245,11 +245,13 @@ select[type="select"]:focus,
     width: 50% !important;
     margin: 0 auto;
     display: block;
-  
+    background: #1a1a1a;
+    color: #ffc30d;
 }
+  
 .profile-button{
     width: 36% !important;
-    margin: 0 auto;
+    margin: 10px auto;
     display: block;
   
 }

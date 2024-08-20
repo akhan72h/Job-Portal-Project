@@ -1,68 +1,104 @@
+<!-- @format -->
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Job Portal</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
     <style>
-        .card {
-            margin: auto;
+        .width{
+            width: 100%;
         }
-        .card-body {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        height: 80vh;
+      }
+      /* Card styling */
+      .card {
+        transform-style: preserve-3d;
+        transform: rotateY(0deg);
+        transition: transform 2s;
+      }
+
+      /* Hover effect to rotate the card */
+      .card:hover {
+        transform: rotateY(360deg);
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-            <div class="container-fluid">
-                <a class="navbar-brand job-prtl" href="welcome.html">Job Portal</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="welcome.html">FAQs</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+      <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand job-prtl" href="wellcome.html">Job Portal</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="wellcome.html"
+                  >FAQs</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
     </header>
 
     <section class="mt-5 pt-5">
-        <div class="container">
-            <div class="row">
-                <h1 class="text-center">WELCOME</h1>
-                <div class="col-12 d-flex justify-content-center text-center">
-                    <div class="card col-md-4 m-2">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Recruiter Actions</h5>
-                            <a class="nav-link" href="RecruiterRegistration.html">SIGN UP</a>
-                            <a class="nav-link" href="RecruiterLogin.html">LOGIN</a>
-                            <a href="#" class="btn btn-primary mt-3">Learn More</a>
-                        </div>
-                    </div>
-                    <div class="card col-md-4 m-2">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Applicant Actions</h5>
-                            <a class="nav-link" href="ApplicantRegistration.html">SIGN UP</a>
-                            <a class="nav-link" href="ApplicantLogin.html">LOGIN</a>
-                            <a href="#" class="btn btn-primary mt-3">Learn More</a>
-                        </div>
-                    </div>
-                </div>
+      <div class="container"> 
+        <div class="row width">
+          
+          <div class="col-12 d-flex justify-content-around text-center">
+            <!-- <div class="animation"> -->
+            <div class="card col-md-4 m-2">
+              <div class="card-body">
+                <h5 class="card-title text-center">Recruiter's</h5>
+                <a class="nav-link" href="RecruiterRegistration.html"
+                  >SIGN UP</a
+                >
+                <a class="nav-link" href="RecruiterLogin.html">LOGIN</a>
+                <a href="#" class="btn btn-primary mt-3">Learn More</a>
+              </div>
             </div>
+            <!-- </div> -->
+            <!-- <div class="animation"> -->
+            <div class="card col-md-4 m-2">
+              <div class="card-body">
+                <h5 class="card-title text-center">Applicant's</h5>
+                <a class="nav-link" href="ApplicantRegistration.html"
+                  >SIGN UP</a
+                >
+                <a class="nav-link" href="ApplicantLogin.html">LOGIN</a>
+                <a href="#" class="btn btn-primary mt-3">Learn More</a>
+              </div>
+            </div>
+            <!-- </div> -->
+          </div>
         </div>
+      </div>
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
-</body>
+  </body>
 </html>
