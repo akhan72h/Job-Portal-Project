@@ -1,0 +1,264 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Job Portal</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body onload="showProfile()">
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand job-prtl" href="wellcome.html">Job Portal</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  aria-current="page"
+                  href="ApplicantHome.html"
+                  >HOME</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  aria-current="page"
+                  href="JobApplication.html"
+                  >APPLICATIONS</a
+                >
+              </li>
+
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  aria-current="page"
+                  href="Applicantprofile.html"
+                  >PROFILE</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="ApplicantLogin.html">LOG OUT</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-12 m-auto">
+            <div class="form-container">
+              <h1>Profile</h1>
+              <form class="Form" action="">
+                <input type="text" placeholder="Name" id="name" required />
+                <textarea
+                  class="text-area"
+                  type="textarea"
+                  name="textarea"
+                  id="bio"
+                  placeholder="Bio (up to 250 words)"
+                  required
+                ></textarea>
+                <input
+                  class="contact-num2"
+                  type="tel"
+                  id="contact"
+                  name="contact"
+                  placeholder="Your Contact Number"
+                  required
+                />
+                <input
+                  type="text"
+                  id="institutionName"
+                  placeholder="Institution Name"
+                />
+                <input type="text" id="startYear" placeholder="Start Year" />
+                <input type="text" id="endYear" placeholder="End Year" />
+                <textarea
+                 class="textarea2"
+                  id="skills"
+                  placeholder="Skills (comma separated)"
+                ></textarea>
+                <input type="text" id="profile" placeholder="Profile URL" />
+                <input type="text" id="resume" placeholder="Resume URL" />
+
+                <button
+                  type="button"
+                  class="Login-button profile-button"
+                  onclick="toggleEdit()"
+                >
+                  Edit Profile
+                </button>
+                <div class="error-message" id="error-message"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      // Function to display profile of Applicant
+      function showProfile() {
+        let MyToken = localStorage.getItem("token");
+
+        fetch("http://localhost:4444/api/user", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${MyToken}`, // Include the Bearer token
+          },
+        })
+          .then((res) => {
+            if (!res.ok) {
+              throw new Error(
+                "Network response was not ok. Status: " + res.status
+              );
+            }
+            return res.json();
+          })
+          .then((data) => {
+            console.log(data); // Log the received data for debugging
+
+            document.getElementById("name").value = data.name || "";
+            document.getElementById("bio").value = data.bio || "";
+            document.getElementById("contact").value = data.contactNumber || "";
+            document.getElementById("institutionName").value =
+              data.education && data.education[0]
+                ? data.education[0].institutionName
+                : "";
+            document.getElementById("startYear").value =
+              data.education && data.education[0]
+                ? data.education[0].startYear
+                : "";
+            document.getElementById("endYear").value =
+              data.education && data.education[0]
+                ? data.education[0].endYear
+                : "";
+            document.getElementById("skills").value = data.skills
+              ? data.skills.join(", ")
+              : "";
+            document.getElementById("profile").value = data.profile || "";
+            document.getElementById("resume").value = data.resume || "";
+          })
+          .catch((error) => {
+            console.error(
+              "There was a problem with the fetch operation:",
+              error
+            );
+          });
+      }
+
+      // Function to toggle between edit and save mode
+      function toggleEdit() {
+        const formElements = document.querySelectorAll(
+          "#name, #bio, #contact, #institutionName, #startYear, #endYear, #skills, #profile, #resume"
+        );
+        const editButton = document.querySelector(".profile-button");
+
+        if (editButton.textContent === "Edit Profile") {
+          formElements.forEach((element) => {
+            element.disabled = false;
+          });
+          editButton.textContent = "Save Profile";
+        } else {
+          saveProfile();
+        }
+      }
+
+      // Function to save the updated profile
+      function saveProfile() {
+        let MyToken = localStorage.getItem("token");
+
+        const education = [
+          {
+            institutionName: document.getElementById("institutionName").value,
+            startYear: document.getElementById("startYear").value,
+            endYear: document.getElementById("endYear").value,
+          },
+        ];
+
+        const skillsArray = document.getElementById("skills").value.split(",");
+
+        let updatedProfile = {
+          name: document.getElementById("name").value,
+          bio: document.getElementById("bio").value,
+          contactNumber: document.getElementById("contact").value,
+          education: education,
+          profile: document.getElementById("profile").value,
+          resume: document.getElementById("resume").value,
+          skills: skillsArray,
+        };
+
+        fetch("http://localhost:4444/api/user", {
+          method: "PUT",
+          body: JSON.stringify(updatedProfile),
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${MyToken}`, // Include the Bearer token
+          },
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+
+            if (data.message === "Profile updated successfully") {
+              Swal.fire({
+                title: "Profile Updated!",
+                text: "Your profile has been updated.",
+                icon: "success",
+                confirmButtonText: "OK",
+              }).then(() => {
+                document.querySelector(".profile-button").textContent =
+                  "Edit Profile";
+                document
+                  .querySelectorAll(
+                    "#name, #bio, #contact, #institutionName, #startYear, #endYear, #skills, #profile, #resume"
+                  )
+                  .forEach((element) => {
+                    element.disabled = true;
+                  });
+              });
+            } else {
+              Swal.fire({
+                title: "Update Failed!",
+                text: data.message,
+                icon: "error",
+                confirmButtonText: "Try Again",
+              });
+            }
+          })
+          .catch((error) => {
+            console.error(
+              "There was a problem with the update operation:",
+              error
+            );
+          });
+      }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+  </body>
+</html>

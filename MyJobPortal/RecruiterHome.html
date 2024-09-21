@@ -81,7 +81,7 @@
         <div class="row">
           <div class="col-12">
             <div class="search-container-wrapper">
-              <h1 class="H1">My Jobs</h1>
+              <h1 class="H1">Jobs</h1>
               <div class="search-container">
                 <input
                   class="search-input"
@@ -295,28 +295,37 @@
     // View Applications
 //<*********************************************************************************************>  
   
-    function viewApplications(jobId) {
+function viewApplications(jobId) {
     let MyToken = localStorage.getItem("token");
-
-    fetch(`http://localhost:4444/api/applicants?jobId=${jobId}&desc=dateOfApplication`, {
-        method: 'GET',
+      //alert('Application ' + MyToken + jobId )
+    // Fetch the applicants related to the job ID
+    fetch(`http://localhost:4444/api/applicants?jobId=${jobId}&desc=date`, {
+        method: "GET",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${MyToken}`
+            Authorization: `Bearer ${MyToken}`, // Include the Bearer token
+        },
+    })
+    .then((res) => {
+        if (!res.ok) {
+            throw new Error("Network response was not ok. Status: " + res.status);
         }
+        return res.json();
     })
-    .then(res => res.json())
-    .then(data => {
-        
-        sessionStorage.setItem('applicantData', JSON.stringify(data));
+    .then((data) => {
+        console.log(data); // Log the data for debugging
 
-       
-        window.location.href = 'viewApplications.html';
+        // Save the data in localStorage or sessionStorage to access it on the viewApplication.html page
+        localStorage.setItem("applicantData", JSON.stringify(data));
+
+        // Redirect to viewApplication.html
+        window.location.href = "viewApplications.html";
     })
-    .catch(error => {
-        console.error('Error fetching applicant data:', error);
+    .catch((error) => {
+        console.error("There was a problem with the fetch operation:", error);
     });
 }
+
      
 //<*********************************************************************************************>
     // Function to sort jobs by salary
@@ -326,25 +335,26 @@ function sortJobsBySalary(jobs) {
     return jobs.sort((a, b) => a.salary - b.salary);
 }
 
-// Event listener for the Apply button
+
 document.getElementById('apply-sort').addEventListener('click', function() {
-    // Check if the salary sort checkbox is checked
+   
     const isSalarySortChecked = document.getElementById('salary-sort').checked;
 
     let jobsToDisplay = allJobs;
 
     if (isSalarySortChecked) {
-        // Sort the jobs by salary in ascending order
+      
         jobsToDisplay = sortJobsBySalary(jobsToDisplay);
     }
 
-    // Display the sorted jobs
+   
     display(jobsToDisplay);
 });
 
 //<*********************************************************************************************>
      // Function to filter jobs based on selected job types
 //<*********************************************************************************************>  
+
  function filterJobsByType() {
         const selectedTypes = Array.from(
           document.querySelectorAll('input[name="job-type"]:checked')
@@ -360,7 +370,7 @@ document.getElementById('apply-sort').addEventListener('click', function() {
         display(FilteredJobs);
       }
 
-      // Event listener for the Apply button
+     
       document
         .getElementById("apply-filter")
         .addEventListener("click", filterJobsByType);

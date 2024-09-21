@@ -1,0 +1,146 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Job Portal</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand job-prtl" href="wellcome.html">Job Portal</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  aria-current="page"
+                  href="ApplicantHome.html"
+                  >HOME</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  aria-current="page"
+                  href="JobApplication.html"
+                  >APPLICATIONS</a
+                >
+              </li>
+
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  aria-current="page"
+                  href="Applicantprofile.html"
+                  >PROFILE</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="ApplicantLogin.html">LOG OUT</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="search-container-wrapper">
+              <h1 class="H1">Applications</h1>
+            </div>
+          </div>
+        </div>
+        <div class="row row-margin" id="job-cards-container">
+          <!-- Job cards will be inserted here -->
+        </div>
+      </div>
+    </section>
+
+    <script>
+      let MyToken = localStorage.getItem("token");
+      let allJobs = [];
+      async function displayData() {
+        let response = await fetch("http://localhost:4444/api/applications", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${MyToken}`,
+          },
+        });
+
+        let data = await response.json();
+        allJobs = data; // Store all jobs in a global variable
+        display(data);
+      }
+
+      const display = (jobs) => {
+        let jobCardsContainer = document.getElementById("job-cards-container");
+        jobCardsContainer.innerHTML = jobs
+          .map(
+            (job) => `
+                <div class="row mb-4">
+                    <div class="col-md-8">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h2 class="card-title">${job.job.title}</h2>
+                                <p class="card-text">Posted By: ${job.recruiter.name}</p>
+                                <p class="card-text">Role: ${job.job.jobType}</p>
+                                <p class="card-text">Salary: ${job.job.salary}</p>
+                                <p class="card-text">Duration: ${job.job.duration}</p>
+                                 <p class="card-text">Skills: ${job.job.skillsets}</p>
+                                <p class="card-text">Applied: ${job.dateOfApplication}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100">
+                          <div class="card-body d-flex flex-column justify-content-center">
+                            <button class="btn mb-2 apply-btn">${job.status}</button>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            `
+          )
+          .join("");
+      };
+
+      displayData();
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+  </body>
+</html>

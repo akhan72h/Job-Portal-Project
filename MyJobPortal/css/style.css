@@ -466,4 +466,31 @@ select[type="select"]:focus,
     height: 90px;
     border: 2px solid #ffc30d;
 }
+.contact-num2 {
+    width: 100% !important;
+    margin: 0px 0px 16px 0px;
+    display: block;
+    background: #1a1a1a;
+    color: #ffc30d;
+    padding: 10px;
+}
+.contact-num2[type="tel"]:focus {
+    border: #ffc30d 1px solid;
+}
+.textarea2 {
+    resize: vertical;
+    width: 100%;
+    height: 100px;
+    color: #ffc30d;
+    background-color: #1a1a1a;
+}
+.login-container2 {
+    max-width: 550px;
+    margin: 0 auto;
+    padding: 30px;
+    border: 1px solid #ffc30d;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
 

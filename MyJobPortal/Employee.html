@@ -122,6 +122,10 @@
         </div>
     </div>
 </div>
+<div class="container mt-4">
+    <h2>Employee Details</h2>
+    <div id="employee-details"></div>
+</div>
 
 <script>
     document.getElementById('job-image').addEventListener('click', function() {
@@ -149,6 +153,43 @@
 
         // Initialize slider value display
         updateSliderValue();
+
+        // ---------------------------------------------------------------->
+
+        document.addEventListener("DOMContentLoaded", function() {
+            // Get the stored accepted applications data from localStorage
+            let acceptedApplications = JSON.parse(localStorage.getItem("acceptedApplications"));
+            console.log(acceptedApplications);
+
+            if (acceptedApplications && acceptedApplications.length > 0) {
+                const detailsContainer = document.getElementById("employee-details");
+
+                acceptedApplications.forEach(applicant => {
+                    const applicantDiv = document.createElement("div");
+                    applicantDiv.classList.add("card", "mb-3");
+
+                    applicantDiv.innerHTML = `
+                        <div class="card-body">
+                            <h5 class="card-title">Application ID: ${applicant._id}</h5>
+                            <p class="card-text"><strong>SOP:</strong> ${applicant.sop}</p>
+                            <p class="card-text"><strong>Status:</strong> ${applicant.status}</p>
+                            <p class="card-text"><strong>User ID:</strong> ${applicant.userId}</p>
+                            <p class="card-text"><strong>Job ID:</strong> ${applicant.jobId}</p>
+                            <p class="card-text"><strong>Rating:</strong> ${applicant.rating}</p>
+
+                            <!-- Action buttons -->
+                            <button class="btn btn-primary mb-2">Edit</button>
+                            <button class="btn btn-warning mb-2">Promote</button>
+                            <button class="btn btn-danger mb-2">Remove</button>
+                        </div>
+                    `;
+
+                    detailsContainer.appendChild(applicantDiv);
+                });
+            } else {
+                document.getElementById("employee-details").innerHTML = "<p>No accepted applications available.</p>";
+            }
+        });
 </script>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
